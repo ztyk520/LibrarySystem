@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.dao.UserDetailMapper">
+    <select id="selectUsername" resultType="string">
+        select username from userdetail where username = #{username}
+    </select>
+    <insert id="insertUserDetail">
+        insert into userdetail (username,name,sex,birthday,email,password) values(#{username},#{name},#{sex},#{birthday},#{email},#{password})
+    </insert>
+    <update id="updatePassword">
+        update userdetail set password = #{password} where username = #{username}
+    </update>
+    <select id="selectUserDetailByUserName" resultType="UserDetail">
+        select * from userdetail where username = #{username}
+    </select>
+    <select id="selecUserDetailListByUserName" resultType="UserDetail">
+        select * from userdetail where username like concat('%',#{username},'%')
+    </select>
+    <select id="selectUserDetailById" resultType="UserDetail">
+        select * from userdetail where id = #{id}
+    </select>
+    <update id="updateUserDetail">
+        update userdetail set username = #{username},sex = #{sex},birthday = #{birthday},name = #{name},email = #{email} where id = #{id}
+    </update>
+    <insert id="addUserDetail">
+        insert into userdetail (username,name,sex,birthday,email) values(#{username},#{name},#{sex},#{birthday},#{email})
+    </insert>
+    <delete id="deleteUseDetailById">
+        delete from userdetail where id = #{id}
+    </delete>
+</mapper>

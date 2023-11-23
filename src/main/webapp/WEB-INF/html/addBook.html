@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>编辑图书</title>
+  <link rel="stylesheet" th:href="@{/css/editBook.css}">
+</head>
+<body>
+<div id="div1">
+  <label id="label1">图书名称</label>
+  <input id="input1" type="text" name="bookName">
+  <label id="label2">作者</label>
+  <input id="input2" type="text" name="author">
+  <label id="label3">出版社</label>
+  <input id="input3" type="text" name="publisher">
+  <label id="label4">ISBN</label>
+  <input id="input4" type="text" name="ISBN">
+  <label id="label5">剩余数量</label>
+  <input id="input5" type="text" name="remain" placeholder="请输入数字">
+  <input id="input6" type="button" value="提交" @click="addBook()">
+</div>
+<script  type="text/javascript" th:src="@{/js/vue.js}"></script>
+<script  type="text/javascript" th:src="@{/js/axios.min.js}"></script>
+<script>
+  function isNull (object){
+    if(object == ""){
+      return "error";
+    }else{
+      return object;
+    }
+  }
+  function isCountNull(object){
+    if (object == ""){
+      return 0;
+    }else{
+      return object
+    }
+  }
+  var vue = new Vue({
+    el:"#div1",
+    methods:{
+      addBook(){
+        var bookname = document.getElementById("input1").value;
+        var author = document.getElementById("input2").value;
+        var publisher = document.getElementById("input3").value;
+        var ISBN = document.getElementById("input4").value;
+        var count = Number(document.getElementById("input5").value);
+        bookname = isNull(bookname);author = isNull(author);publisher = isNull(publisher);ISBN = isNull(ISBN);count = isCountNull(count);
+        axios.get(
+                "/Library/addbook?bookname="+bookname+"&author="+author+"&publisher="+publisher+"&ISBN="+ISBN+"&count="+count
+        ).then(function (response) {
+          if (response.data === false){
+            alert("输入的数据非法或输入不全,请重写输入")
+          }else{
+            window.location.href="/Library/managebook";
+          }
+        })
+      }
+    }
+  });
+</script>
+</body>
+</html>

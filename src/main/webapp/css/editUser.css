@@ -1,0 +1,116 @@
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url("editUser.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#div1{
+    background-color: #ddbab1;
+    opacity: 90%;
+    border-radius: 25px;
+    position: absolute;
+    height: 70%;
+    width: 30%;
+    top: 15%;
+    left: 35%;
+}
+
+#label1{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    font-size: 15px;
+}
+
+#label2{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    font-size: 15px;
+}
+
+#label3{
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    font-size: 15px;
+}
+#label4{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    font-size: 15px;
+}
+#label5{
+    position: absolute;
+    top: 65%;
+    left: 10%;
+    font-size: 15px;
+}
+#input1{
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    width: 80%;
+    height: 5%;
+}
+#input2{
+    position: absolute;
+    top: 27%;
+    left: 10%;
+    width: 80%;
+    height: 5%;
+}
+#input3{
+    position: absolute;
+    top: 42%;
+    left: 12%;
+    width: 5%;
+    height: 3%;
+}
+#input4{
+    position: absolute;
+    top: 57%;
+    left: 10%;
+    width: 80%;
+    height: 5%;
+}
+#input5{
+    position: absolute;
+    top: 72%;
+    left: 10%;
+    width: 80%;
+    height: 5%;
+}
+#input6{
+    position: absolute;
+    top: 85%;
+    left: 10%;
+    width: 82%;
+    height: 7%;
+}
+#input7{
+    position: absolute;
+    top: 42%;
+    left: 22%;
+    width: 5%;
+    height: 3%;
+}
+#label6{
+    position: absolute;
+    top: 42%;
+    left: 10%;
+}
+#label7{
+    position: absolute;
+    top: 42%;
+    left: 20%;
+}

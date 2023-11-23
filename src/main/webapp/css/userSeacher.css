@@ -1,0 +1,125 @@
+html{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-image: url("/Library/css/images/manageUser.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#label1{
+    font-size: 25px;
+    font-family: 宋体;
+    position: absolute;
+    left: 10%;
+    color: black;
+}
+#label2{
+    font-size: 15px;
+    position: absolute;
+    left: 86%;
+}
+.navbar {
+    padding: 10px; /* 设置导航栏的内边距 */
+    height: 5%;
+    background-color: white;/* 设置导航栏的背景颜色 */
+}
+
+.nav {
+    list-style-type: none; /* 去除列表项的默认样式 */
+    margin: 0; /* 去除列表的外边距 */
+    padding: 0; /* 去除列表的内边距 */
+    height: 5%;
+    position: absolute;
+    top: 2%;
+    left: 25%;
+}
+
+.nav li {
+    display: inline-block; /* 设置导航项水平排列 */
+}
+
+.nav li a {
+    color: #000; /* 设置导航项的文本颜色 */
+    text-decoration: none; /* 去除链接的下划线 */
+    padding: 10px; /* 设置导航项的内边距 */
+}
+
+.nav li a:hover {
+    background-color: #ccc; /* 设置鼠标悬停时导航项的背景颜色 */
+}
+
+.nav li a.active {
+    background-color: #003366; /* 设置当前页面导航项的背景颜色 */
+    color: #fff; /* 设置当前页面导航项的文本颜色 */
+}
+#button1{
+    position: absolute;
+    left: 95%;
+    font-size: 15px;
+    border: none;
+}
+#button2{
+    position: absolute;
+    left: 56%;
+    height: 6%;
+    border: none;
+    font-size: 15px;
+}
+#button3{
+    position: absolute;
+    left: 15%;
+    top: 95%;
+}
+#button4{
+    position: absolute;
+    left: 25%;
+    top: 95%;
+}
+#button5{
+    position: absolute;
+    left: 35%;
+    top: 95%;
+}
+#button6{
+    position: absolute;
+    left: 45%;
+    top: 95%;
+}
+#div1{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 15%;
+}
+#input1{
+    position: absolute;
+    height: 5%;
+    left: 40%;
+    width: 15%;
+}
+#table{
+    position: absolute;
+    border-collapse: separate; /* 设置表格的边框为分隔模式，确保border-spacing生效 */
+    border-spacing: 10px; /* 设置单元格的间距为10像素 */
+    top: 12%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    opacity: 90%;
+}
+th{
+    text-align: left;
+}
+td{
+    text-align: left;
+    width: 17%;
+    height: 20%;
+}

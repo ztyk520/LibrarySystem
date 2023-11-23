@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.dao.BookMapper">
+    <select id="selectByBookName" resultType="Book">
+        select * from book where bookname like concat('%',#{bookname},'%')
+    </select>
+    <update id="updateBookById">
+        update book set status = true where id = #{id}
+    </update>
+    <select id="selectBookById" resultType="Book">
+        select * from book where id = #{id}
+    </select>
+    <insert id="insertBookBorrow">
+        insert into borrow (uid,bid,borrowdate) values(#{uid},#{bid},#{borrowdate})
+    </insert>
+    <update id="updateBookCountById">
+        update book set count = count - 1 where id = #{id}
+    </update>
+    <select id="selectBorrowBook" resultType="Integer">
+        select bid from borrow where uid = #{id}
+    </select>
+    <select id="selectBookByIntegers" resultType="Book">
+        select * from book where id in (
+        <foreach collection="ids" item="bookid" separator=",">
+            #{bookid}
+        </foreach>
+        )
+    </select>
+    <select id="selectBookBorrowTimeByIntegers" resultType="String">
+        select borrowdate from borrow where bid in (
+        <foreach collection="ids" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </select>
+    <select id="selectMapById" resultType="Map">
+        select * from borrow,book where borrow.bid = book.id and borrow.uid = #{id} and bookname like concat('%',#{bookname},'%')
+    </select>
+    <update id="updateReturnDate">
+        update borrow set returndate = #{returndate} where uid = #{uid} and bid = #{bid}
+    </update>
+    <update id="updateBookStatusAndCount">
+        update book set status = false,count = count + 1 where id = #{id}
+    </update>
+    <insert id="insertBook">
+        insert into book (bookname,author,publisher,count,status,ISBN) values(#{bookname},#{author},#{publisher},#{count},#{status},#{ISBN})
+    </insert>
+    <update id="updateBook">
+        update book set bookname = #{bookname},author = #{author},publisher = #{publisher},count = #{count},ISBN = #{ISBN} where id = #{id}
+    </update>
+    <delete id="delteBookById">
+        delete from book where id = #{id}
+    </delete>
+    <select id="selectBorrowCodeByUidAndBid" resultType="Map">
+        select bid,bookname,uid,borrowdate,returndate from borrow,book where 1 = 1 and borrow.bid = book.id
+        <if test="uid != null">
+            and uid = #{uid}
+        </if>
+        <if test="bid != null">
+            and bid = #{bid}
+        </if>
+        <if test="bookname != null">
+            and bookname like concat('%',#{bookname},'%')
+        </if>
+    </select>
+    <delete id="deleteBorrowByBorrowdate">
+        delete from borrow where borrowdate = #{borrowdate}
+    </delete>
+</mapper>

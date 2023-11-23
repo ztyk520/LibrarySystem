@@ -1,0 +1,117 @@
+html{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-image: url("/Library/css/images/registe_background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#b1{
+    font-size: 27px;
+    position: absolute;
+    left: 36.5%;
+    top: 20%;
+}
+#div1{
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    left: 35%;
+    top: 30%;
+    border-radius: 20px;
+    background-color: beige;
+    opacity: 90%;
+}
+#laber1{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+#laber2{
+    position: absolute;
+    top: 5%;
+    left: 55%;
+}
+#laber3{
+    position: absolute;
+    top: 22%;
+    left: 5%;
+}
+#laber4{
+    position: absolute;
+    top: 42%;
+    left: 5%;
+}
+#laber5{
+    position: absolute;
+    top: 62%;
+    left: 5%;
+}
+#laber6{
+    position: absolute;
+    top: 22%;
+    left: 55%;
+}
+#laber7{
+    position: absolute;
+    top: 22%;
+    left: 68%;
+}
+#laber8{
+    position: absolute;
+    top: 22%;
+    left: 80%;
+}
+#input1{
+    position: absolute;
+    top: 13%;
+    left: 5%;
+    width: 40%;
+}
+#input2{
+    position: absolute;
+    top: 13%;
+    left: 55%;
+    width: 40%;
+}
+#input3{
+    position: absolute;
+    top: 32%;
+    left: 5%;
+    width: 90%;
+}
+#input4{
+    position: absolute;
+    top: 52%;
+    left: 5%;
+    width: 90%;
+}
+#input5{
+    position: absolute;
+    top: 72%;
+    left: 5%;
+    width: 90%;
+}
+#input6{
+    position: absolute;
+    top: 85%;
+    left: 5%;
+    width: 90%;
+    height: 10%;
+}
+#checkbox1{
+    position: absolute;
+    top: 22%;
+    left: 72%;
+}
+#checkbox2{
+    position: absolute;
+    top: 22%;
+    left: 85%;
+}

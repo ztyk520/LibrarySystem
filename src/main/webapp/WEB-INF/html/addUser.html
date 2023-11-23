@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>添加用户</title>
+  <link rel="stylesheet" th:href="@{/css/editUser.css}" href="../../css/editUser.css">
+</head>
+<body>
+<div id="div1">
+  <form th:action="@{/adduser}" method="post">
+    <label id="label1">用户名</label>
+    <input id="input1" type="text" name="username">
+    <label id="label2">姓名</label>
+    <input id="input2" type="text" name="name">
+    <label id="label3">性别</label>
+    <label id="label6">男</label>
+    <label id="label7">女</label>
+    <input id="input3" type="radio" name="sex" value="男">
+    <input id="input7" type="radio" name="sex" value="女">
+    <label id="label4">生日</label>
+    <input id="input4" type="date" name="birthday">
+    <label id="label5">邮箱</label>
+    <input id="input5" type="text" name="email">
+    <input id="input6" type="submit" value="提交">
+  </form>
+</div>
+</body>
+</html>
