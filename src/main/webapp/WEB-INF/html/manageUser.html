@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>用户管理</title>
+  <link rel="stylesheet" th:href="@{/css/manageUser.css}" href="../../css/manageUser.css">
+</head>
+<body>
+<div class="navbar">
+  <label id="label1">图书管理系统</label>
+  <ul class="nav">
+    <li><a href="manageBook.html" th:href="@{/managebook}">图书管理</a></li>
+    <li><a href="manageUser.html" th:href="@{/manageuser}">用户管理</a></li>
+    <li><a href="manageBorrow.html" th:href="@{/manageborrow}">借还管理</a></li>
+    <li><a href="updateManagerPassword.html" th:href="@{/updatemanagerpassword}">密码修改</a></li>
+  </ul>
+  <label id="label2" th:text="管理员+':'+${session.admin.getUsername()}">admin</label>
+  <button id="button1" th:onclick="|exit()|">退出</button>
+</div>
+<div id="div1">
+  <form th:action="@{/manageuser}" method="post">
+    <input id="input1" type="text" name="username" placeholder="输入用户名">
+    <button id="button2" type="submit">搜索</button>
+  </form>
+  <table id="table">
+    <tr>
+      <th>用户编号</th>
+      <th>用户名</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>生日</th>
+      <th>邮箱</th>
+      <th>编辑</th>
+      <th>删除</th>
+    </tr>
+    <tr th:each="user, rowStatus : ${userlist}" th:if="${rowStatus.index} &lt; 5">
+      <td th:text="${user.getId()}"></td>
+      <td th:text="${user.getUsername()}"></td>
+      <td th:text="${user.getName()}"></td>
+      <td th:text="${user.getSex()}"></td>
+      <td th:text="${user.getBirthday()}"></td>
+      <td th:text="${user.getEmail()}"></td>
+      <td><button th:onclick="|editUser(${user.getId()})|">编辑</button></td>
+      <td><button th:onclick="|deleteUser(${user.getId()})|">删除</button></td>
+    </tr>
+    <tr th:each="row: ${#numbers.sequence(1, 5 - #lists.size(userlist), 1)}">
+      <td colspan="8"></td>
+      <!-- 使用循环生成额外的空行，循环次数为 5 - bookList 的大小 -->
+    </tr>
+  </table>
+  <button id="button3" th:data-username="${username}" th:onclick="|pageChange(1,${pages},this.getAttribute('data-username'))|">首页</button>
+  <button id="button4" th:data-username="${username}" th:onclick="|pageChange(${pageNum - 1},${pages},this.getAttribute('data-username'))|">上一页</button>
+  <button id="button5" th:data-username="${username}" th:onclick="|pageChange(${pageNum + 1},${pages},this.getAttribute('data-username'))|">下一页</button>
+  <button id="button6" th:data-username="${username}" th:onclick="|pageChange(${pages},${pages},this.getAttribute('data-username'))|">尾页</button>
+  <a id="a1" href="editUser.html" th:href="@{/addUser.html}">添加用户</a>
+</div>
+<script th:src="@{/js/manageUser.js}"></script>
+</body>
+</html>

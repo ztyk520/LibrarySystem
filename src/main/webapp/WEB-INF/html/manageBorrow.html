@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>借阅管理</title>
+    <link rel="stylesheet" th:href="@{/css/manageBorrow.css}" href="../../css/manageBorrow.css">
+</head>
+<body>
+<div class="navbar">
+    <label id="label1">图书管理系统</label>
+    <ul class="nav">
+        <li><a href="manageBook.html" th:href="@{/managebook}">图书管理</a></li>
+        <li><a href="manageUser.html" th:href="@{/manageuser}">用户管理</a></li>
+        <li><a href="manageBorrow.html" th:href="@{/manageborrow}">借还管理</a></li>
+        <li><a href="updateManagerPassword.html" th:href="@{/updatemanagerpassword}">密码修改</a></li>
+    </ul>
+    <label id="label2" th:text="管理员+':'+${session.admin.getUsername()}">admin</label>
+    <button id="button1" th:onclick="|exit()|">退出</button>
+</div>
+<div id="div1">
+    <label id="label3">图书编号</label>
+    <label id="label4">图书名</label>
+    <label id="label5">用户编号</label>
+    <form th:action="@{/manageborrow}" method="post">
+        <input id="input1" type="text" name="bid" placeholder="图书编号">
+        <input id="input2" type="text" name="bookname" placeholder="图书名">
+        <input id="input3" type="text" name="uid" placeholder="用户编号">
+        <input id="input4" type="submit" value="搜索">
+    </form>
+    <table id="table">
+        <tr>
+            <th>图书编号</th>
+            <th>图书名</th>
+            <th>用户编号</th>
+            <th>借阅时间</th>
+            <th>归还时间</th>
+            <th>状态</th>
+            <th>删除</th>
+        </tr>
+        <!-- 使用Thymeleaf的th:each和th:if来控制遍历和空行的展示 -->
+        <tr th:each="map, iterStat : ${list}">
+            <td th:text="${map['bid']}"></td>
+            <td th:text="${map['bookname']}"></td>
+            <td th:text="${map['uid']}"></td>
+            <td th:text="${map['borrowdate']}"></td>
+            <td th:unless="${#maps.containsKey(map,'returndate')}"></td>
+            <td th:if="${#maps.containsKey(map,'returndate')}" th:text="${map['returndate']}"></td>
+            <td th:unless="${#maps.containsKey(map,'returndate')}">借阅中</td>
+            <td th:if="${#maps.containsKey(map,'returndate')}">已归还</td>
+            <td><button th:data-borrowdate="${map['borrowdate']}" th:onclick="|deleteborrow(this.getAttribute('data-borrowdate'))|">删除</button></td>
+        </tr>
+        <!-- 根据遍历次数与5的差值差值来添加空行 -->
+        <tr th:each="i : ${#numbers.sequence(0, 4 - list.size())}" th:if="${list.size() < 5}">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    <button id="button3" th:onclick="|pageChange(1,${pages})|">首页</button>
+    <button id="button4" th:onclick="|pageChange(${pageNum - 1},${pages})|">上一页</button>
+    <button id="button5" th:onclick="|pageChange(${pageNum + 1},${pages})|">下一页</button>
+    <button id="button6" th:onclick="|pageChange(${pages},${pages})|">尾页</button>
+</div>
+<script th:src="@{/js/manageBorrow.js}"></script>
+</body>
+</html>

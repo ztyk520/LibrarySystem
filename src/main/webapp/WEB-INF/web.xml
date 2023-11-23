@@ -1,0 +1,53 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+    <!--    设置配置文件的路径-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <!--    配置spring过滤器-->
+<!--    编码过滤器一定是第一位-->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!--        加上初始化编码-->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--    配置Spring的监听器,默认只加载 WEB-INF目录下的applicationContext.xml-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!--  配置SpringMVC的前端控制器DispacherServlet-->
+    <servlet>
+        <!--    配置DispacherSerlver的servlet名字-->
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--      配置指定SpringMVC配置文件路径-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:SpringMVC-servlet.xml</param-value>
+        </init-param>
+        <!--      配置DispacherServlet的初始化时机到服务器启动时-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <!--    用DispcherServlet的名字来与url路径模型对应-->
+        <servlet-name>SpringMVC</servlet-name>
+        <!--    url路径模型可以使用通配符，/会匹配所有请求(除了.jsp结尾的请求，/*能匹配但不需要，因为tomcat的web.xml中有个JspServlet来处理.jsp请求)，*.do会匹配所有以.do为结尾的请求-->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>

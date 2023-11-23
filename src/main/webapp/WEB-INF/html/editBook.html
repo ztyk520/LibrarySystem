@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑图书</title>
+    <link rel="stylesheet" th:href="@{/css/editBook.css}">
+</head>
+<body>
+    <div id="div1">
+        <label id="label1">图书名称</label>
+        <input id="input1" type="text" name="bookName" th:value="${book.getBookname()}">
+        <label id="label2">作者</label>
+        <input id="input2" type="text" name="author" th:value="${book.getAuthor()}">
+        <label id="label3">出版社</label>
+        <input id="input3" type="text" name="publisher" th:value="${book.getPublisher()}">
+        <label id="label4">ISBN</label>
+        <input id="input4" type="text" name="ISBN" th:value="${book.getISBN()}">
+        <label id="label5">剩余数量</label>
+        <input id="input5" type="text" name="remain" th:value="${book.getCount()}" placeholder="请输入数字">
+        <input id="input6" type="button" value="修改" th:onclick="|editBook(${book.getId()})|">
+    </div>
+    <script th:src="@{/js/editBook.js}"></script>
+    <script  type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <script  type="text/javascript" th:src="@{/js/axios.min.js}"></script>
+</body>
+</html>

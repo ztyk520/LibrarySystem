@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <link rel="stylesheet" th:href="@{/css/userInfo.css}" href="../../css/userInfo.css">
+</head>
+<body>
+<div class="navbar">
+  <label id="label1">图书馆</label>
+  <ul class="nav">
+    <li><a href="userSeacher.html" th:href="@{/userseacher}">图书查询</a></li>
+    <li><a href="userInfo.html" th:href="@{/userinfo}">个人信息</a></li>
+    <li><a href="userReturn.html" th:href="@{/userreturn}">图书归还</a></li>
+    <li><a href="updateUserPassword.html" th:href="@{updateuserpassword}">密码修改</a></li>
+  </ul>
+    <laber id="label2" th:text="用户+':'+${session.user.getUsername()}">用户</laber>
+  <button id="button1" th:onclick="|exit()|">退出</button>
+</div>
+<div id="div1">
+  <div id="div2">
+    <label id="label3">我的信息</label>
+  </div>
+  <div id="div3">
+      <hr id="hr1">
+      <label id="label4">用户名</label>
+      <b id="b1" th:text="${userdetail.getUsername}">zt</b>
+      <hr id="hr2">
+      <label id="label5">姓名</label>
+      <b id="b2" th:text="${userdetail.getName()}">zt</b>
+      <hr id="hr3">
+      <label id="label6">性别</label>
+      <b id="b3" th:text="${userdetail.getSex()}">男</b>
+      <hr id="hr4">
+      <label id="label7">生日</label>
+      <b id="b4" th:text="${userdetail.getBirthday()}">生日</b>
+      <hr id="hr5">
+      <label id="label8">邮箱</label>
+      <b id="b5" th:text="${userdetail.getEmail()}">邮箱</b>
+      <hr id="hr6">
+  </div>
+</div>
+<script th:src="@{/js/userInfo.js}"></script>
+</body>
+</html>

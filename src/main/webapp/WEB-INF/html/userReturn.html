@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>图书归还</title>
+  <link rel="stylesheet" th:href="@{/css/userReturn.css}" href="../../css/userReturn.css">
+</head>
+<body>
+<div class="navbar">
+  <label id="label1">图书馆</label>
+  <ul class="nav">
+    <li><a href="userSeacher.html" th:href="@{/userseacher}">图书查询</a></li>
+    <li><a href="userInfo.html" th:href="@{/userinfo}">个人信息</a></li>
+    <li><a href="userReturn.html" th:href="@{/userreturn}">图书归还</a></li>
+    <li><a href="updateUserPassword.html" th:href="@{updateuserpassword}">密码修改</a></li>
+  </ul>
+  <laber id="label2" th:text="用户+':'+${session.user.getUsername()}">用户</laber>
+  <button id="button1" th:onclick="|exit()|">退出</button>
+</div>
+<div id="div1">
+  <form th:action="@{/userreturn}" method="post">
+    <input id="input1" type="text" name="bookname" placeholder="输入图书名">
+    <button id="button2" type="submit">搜索</button>
+  </form>
+  <table id="table">
+    <tr>
+      <th>图书编号</th>
+      <th>图书名称</th>
+      <th>借阅日期</th>
+      <th>归还日期</th>
+      <th>归还</th>
+    </tr>
+    <!-- 使用Thymeleaf的th:each和th:if来控制遍历和空行的展示 -->
+    <tr th:each="map, iterStat : ${list}">
+      <td th:text="${map['bid']}"></td>
+      <td th:text="${map['bookname']}"></td>
+      <td th:text="${map['borrowdate']}"></td>
+      <td th:if="${#maps.containsKey(map,'returndate')}" th:text="${map['returndate']}"></td>
+      <td th:unless="${#maps.containsKey(map,'returndate')}">未归还</td>
+      <td th:unless="${#maps.containsKey(map,'returndate')}"><button th:onclick="|returnBook(${map['uid']},${map['bid']})|">归还</button></td>
+      <td th:if="${#maps.containsKey(map,'returndate')}">已归还</td>
+    </tr>
+    <!-- 根据遍历次数与5的差值差值来添加空行 -->
+    <tr th:each="i : ${#numbers.sequence(0, 4 - list.size())}" th:if="${list.size() < 5}">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <button id="button3" th:data-bookname="${bookname}" th:onclick="|pageChange(1,${pages},this.getAttribute('data-bookname'))|">首页</button>
+  <button id="button4" th:data-bookname="${bookname}" th:onclick="|pageChange(${pageNum - 1},${pages},this.getAttribute('data-bookname'))|">上一页</button>
+  <button id="button5" th:data-bookname="${bookname}" th:onclick="|pageChange(${pageNum + 1},${pages},this.getAttribute('data-bookname'))|">下一页</button>
+  <button id="button6" th:data-bookname="${bookname}" th:onclick="|pageChange(${pages},${pages},this.getAttribute('data-bookname'))|">尾页</button>
+</div>
+<script th:src="@{/js/userReturn.js}"></script>
+</body>
+</html>

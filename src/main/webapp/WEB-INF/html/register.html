@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" th:href="@{/css/register.css}" href="../../css/register.css">
+</head>
+<body>
+<b id="b1">欢迎注册</b>
+<div id="div1">
+    <form th:action="@{/register.do}" method="post">
+        <label id="laber1">姓名</label>
+        <input id="input1" type="text" name="name">
+        <label id="laber2">生日</label>
+        <input type="date" id="input2" name="birthday">
+        <label id="laber3">邮箱</label>
+        <input id="input3" type="text" name="email">
+        <label id="laber4">用户名</label>
+        <input id="input4" type="text" name="username" placeholder="只允许数字和字母，且长度不超过20位">
+        <label id="laber5">密码</label>
+        <input id="input5" type="password" name="password" placeholder="长度不超过30位">
+        <label id="laber6">性别</label>
+        <label id="laber7">男:</label>
+        <input id="checkbox1" type="radio" name="sex" value="男">
+        <label id="laber8">女:</label>
+        <input id="checkbox2" type="radio" name="sex" value="女">
+        <input id="input6" type="submit" value="提交">
+    </form>
+</div>
+<script th:src="@{/js/register.js}"></script>
+</body>
+</html>
