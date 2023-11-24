@@ -55,10 +55,10 @@
             <td>&nbsp;</td>
         </tr>
     </table>
-    <button id="button3" th:onclick="|pageChange(1,${pages})|">首页</button>
-    <button id="button4" th:onclick="|pageChange(${pageNum - 1},${pages})|">上一页</button>
-    <button id="button5" th:onclick="|pageChange(${pageNum + 1},${pages})|">下一页</button>
-    <button id="button6" th:onclick="|pageChange(${pages},${pages})|">尾页</button>
+    <button id="button3" th:data-uid="${uid}" th:data-bookname="${bookname}" th:data-bid="${bid}" th:onclick="|pageChange(1,${pages},this.getAttribute('data-bid'),this.getAttribute('data-bookname'),this.getAttribute('data-uid'))|">首页</button>
+    <button id="button4" th:data-uid="${uid}" th:data-bookname="${bookname}" th:data-bid="${bid}" th:onclick="|pageChange(${pageNum - 1},${pages},this.getAttribute('data-bid'),this.getAttribute('data-bookname'),this.getAttribute('data-uid'))|">上一页</button>
+    <button id="button5" th:data-uid="${uid}" th:data-bookname="${bookname}" th:data-bid="${bid}" th:onclick="|pageChange(${pageNum + 1},${pages},this.getAttribute('data-bid'),this.getAttribute('data-bookname'),this.getAttribute('data-uid'))|">下一页</button>
+    <button id="button6" th:data-uid="${uid}" th:data-bookname="${bookname}" th:data-bid="${bid}" th:onclick="|pageChange(${pages},${pages},this.getAttribute('data-bid'),this.getAttribute('data-bookname'),this.getAttribute('data-uid'))|">尾页</button>
 </div>
 <script th:src="@{/js/manageBorrow.js}"></script>
 </body>

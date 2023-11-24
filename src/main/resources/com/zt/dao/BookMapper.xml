@@ -68,4 +68,7 @@
     <delete id="deleteBorrowByBorrowdate">
         delete from borrow where borrowdate = #{borrowdate}
     </delete>
+    <delete id="deleteBorrowByBid">
+        delete from borrow where bid = #{id}
+    </delete>
 </mapper>

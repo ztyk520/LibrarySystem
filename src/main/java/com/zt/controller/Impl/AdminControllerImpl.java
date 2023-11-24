@@ -157,6 +157,15 @@ public class AdminControllerImpl implements AdminController {
         request.setAttribute("list", maps);
         request.setAttribute("pages", pages);
         request.setAttribute("pageNum", pageNum);
+        if(uid != null){
+            request.setAttribute("uid", uid);
+        }
+        if(bookname != null){
+            request.setAttribute("bookname", bookname);
+        }
+        if(bid != null){
+            request.setAttribute("bid", bid);
+        }
         return "manageBorrow";
     }
 

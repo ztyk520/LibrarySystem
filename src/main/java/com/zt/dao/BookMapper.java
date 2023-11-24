@@ -44,4 +44,5 @@ public interface BookMapper {
     List<Map<String,Object>> selectBorrowCodeByUidAndBid(@Param("uid") Integer uid,@Param("bookname") String bookname,@Param("bid") Integer bid);
 
     void deleteBorrowByBorrowdate(@Param("borrowdate") String borrowdate);
+    void deleteBorrowByBid(@Param("id") Integer id);
 }

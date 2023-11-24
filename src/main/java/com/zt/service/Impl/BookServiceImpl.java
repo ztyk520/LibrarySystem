@@ -127,6 +127,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void deleteBook(Integer id) {
+//      先删除外键，在删主键，先删除借阅记录
+        bookMapper.deleteBorrowByBid(id);
         bookMapper.delteBookById(id);
     }
 
